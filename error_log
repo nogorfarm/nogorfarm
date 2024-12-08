@@ -1799,3 +1799,7 @@ Stack trace:
 #17 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(Object(Illuminate\View\ViewException))
 #18 {main}
   thrown in /home/nogorfar/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 760
+[08-Dec-2024 18:41:34 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/nogorfar/public_html/_ide_helper.php:19679
+Stack trace:
+#0 {main}
+  thrown in /home/nogorfar/public_html/_ide_helper.php on line 19679

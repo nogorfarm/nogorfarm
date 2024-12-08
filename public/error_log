@@ -1,0 +1,30 @@
+[08-Dec-2024 18:33:36 UTC] PHP Warning:  require(/home/nogorfar/public_html/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:33:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nogorfar/public_html/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/nogorfar/public_html/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:41:21 UTC] PHP Warning:  require(/home/nogorfar/public_html/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:41:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nogorfar/public_html/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/nogorfar/public_html/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:41:23 UTC] PHP Warning:  require(/home/nogorfar/public_html/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:41:23 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nogorfar/public_html/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/nogorfar/public_html/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:51:28 UTC] PHP Warning:  require(/home/nogorfar/public_html/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:51:28 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nogorfar/public_html/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/nogorfar/public_html/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:54:44 UTC] PHP Warning:  require(/home/nogorfar/public_html/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 18:54:44 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nogorfar/public_html/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/nogorfar/public_html/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 19:15:56 UTC] PHP Warning:  require(/home/nogorfar/public_html/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/nogorfar/public_html/public/index.php on line 34
+[08-Dec-2024 19:15:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nogorfar/public_html/public/../vendor/autoload.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/nogorfar/public_html/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/nogorfar/public_html/public/index.php on line 34
