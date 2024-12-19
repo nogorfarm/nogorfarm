@@ -137,7 +137,10 @@ class CheckoutController extends Controller
                 flash(translate('Please try again later.'))->warning();
                 return redirect()->route('checkout');
             }
+
+
         }
+
 
         if ($request->payment_option == null) {
             flash(translate('There is no payment option is selected.'))->warning();
@@ -145,7 +148,6 @@ class CheckoutController extends Controller
         }
         $user = auth()->user();
         $carts = Cart::where('user_id', $user->id)->active()->get();
-
 
         // Minumum order amount check
         if(get_setting('minimum_order_amount_check') == 1){
@@ -215,7 +217,7 @@ class CheckoutController extends Controller
     {
         $validator = Validator::make($guest_shipping_info, [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users|max:255',
+            'email' => 'sometimes|email|unique:users|max:255',
             'phone' => 'required|max:12',
             'address' => 'required|max:255',
             'country_id' => 'required|Integer',
@@ -234,35 +236,35 @@ class CheckoutController extends Controller
         // User Create
         $user = new User();
         $user->name = $guest_shipping_info['name'];
-        $user->email = $guest_shipping_info['email'];
+        $user->email = $guest_shipping_info['email'] ?? null;
         $user->phone = addon_is_activated('otp_system') ? '+'.$guest_shipping_info['country_code'].$guest_shipping_info['phone'] : null;
         $user->password = Hash::make($password);
         $user->email_verified_at = $isEmailVerificationEnabled != 1 ? date('Y-m-d H:m:s') : null;
         $user->save();
 
         // Guest Account Opening and verification(if activated) eamil send
-        try {
-            EmailUtility::customer_registration_email('registration_from_system_email_to_customer', $user, $password);
-        } catch (\Exception $e) {
-            $success = 0;
-            $user->delete();
-        }
-
-        if($success == 0){
-            return $success;
-        }
-
-        // Sending email verification Notification
-        if($isEmailVerificationEnabled == 1){
-            EmailUtility::email_verification($user, 'customer');
-        }
-
-        // Customer Account Opening Email to Admin
-        if ((get_email_template_data('customer_reg_email_to_admin', 'status') == 1)) {
-            try {
-                EmailUtility::customer_registration_email('customer_reg_email_to_admin', $user, null);
-            } catch (\Exception $e) {}
-        }
+//        try {
+//            EmailUtility::customer_registration_email('registration_from_system_email_to_customer', $user, $password);
+//        } catch (\Exception $e) {
+//            $success = 0;
+//            $user->delete();
+//        }
+//
+//        if($success == 0){
+//            return $success;
+//        }
+//
+//        // Sending email verification Notification
+//        if($isEmailVerificationEnabled == 1){
+//            EmailUtility::email_verification($user, 'customer');
+//        }
+//
+//        // Customer Account Opening Email to Admin
+//        if ((get_email_template_data('customer_reg_email_to_admin', 'status') == 1)) {
+//            try {
+//                EmailUtility::customer_registration_email('customer_reg_email_to_admin', $user, null);
+//            } catch (\Exception $e) {}
+//        }
 
         // User Address Create
         $address = new Address;
@@ -271,7 +273,7 @@ class CheckoutController extends Controller
         $address->country_id    = $guest_shipping_info['country_id'];
         $address->state_id      = $guest_shipping_info['state_id'];
         $address->city_id       = $guest_shipping_info['city_id'];
-        $address->postal_code   = $guest_shipping_info['postal_code'];
+        $address->postal_code   = $guest_shipping_info['postal_code'] ?? null;
         $address->phone         = '+'.$guest_shipping_info['country_code'].$guest_shipping_info['phone'];
         $address->longitude     = isset($guest_shipping_info['longitude']) ? $guest_shipping_info['longitude'] : null;
         $address->latitude      = isset($guest_shipping_info['latitude']) ? $guest_shipping_info['latitude'] : null;
