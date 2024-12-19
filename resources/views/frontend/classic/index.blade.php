@@ -162,7 +162,7 @@
                         <!-- Links -->
                         <div class="d-flex">
                             <a class="text-blue fs-10 fs-md-12 fw-700 hov-text-primary animate-underline-primary"
-                                href="{{ route('categories.all') }}">{{ translate('View All Categories') }}</a>
+                               href="{{ route('categories.all') }}">{{ translate('View All Categories') }}</a>
                         </div>
                     </div>
                 </div>
@@ -170,22 +170,22 @@
                 <div class="bg-white px-3">
                     <div class="row border-top border-right">
                         @foreach ($featured_categories->take(6) as $key => $category)
-                        @php
-                            $category_name = $category->getTranslation('name');
-                        @endphp
-                            <div class="col-xl-4 col-md-6 border-left border-bottom py-3 py-md-2rem">
+                            @php
+                                $category_name = $category->getTranslation('name');
+                            @endphp
+                            <div class="col-6 col-md-6 col-xl-4 border-left border-bottom py-3 py-md-2rem">
                                 <div class="d-sm-flex text-center text-sm-left">
                                     <div class="mb-3">
                                         <img src="{{ isset($category->bannerImage->file_name) ? my_asset($category->bannerImage->file_name) : static_asset('assets/img/placeholder.jpg') }}"
-                                            class="lazyload w-150px h-auto mx-auto has-transition"
-                                            alt="{{ $category->getTranslation('name') }}"
-                                            onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
+                                             class="lazyload w-150px h-auto mx-auto has-transition"
+                                             alt="{{ $category->getTranslation('name') }}"
+                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
                                     </div>
                                     <div class="px-2 px-lg-4">
                                         <h6 class="text-dark mb-0 text-truncate-2">
                                             <a class="text-reset fw-700 fs-14 hov-text-primary"
-                                                href="{{ route('products.category', $category->slug) }}"
-                                                title="{{ $category_name }}">
+                                               href="{{ route('products.category', $category->slug) }}"
+                                               title="{{ $category_name }}">
                                                 {{ $category_name }}
                                             </a>
                                         </h6>
