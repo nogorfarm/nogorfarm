@@ -167,41 +167,97 @@
                     </div>
                 </div>
                 <!-- Categories -->
-                <div class="bg-white px-3">
-                    <div class="row border-top border-right">
-                        @foreach ($featured_categories->take(6) as $key => $category)
-                            @php
-                                $category_name = $category->getTranslation('name');
-                            @endphp
-                            <div class="col-6 col-md-6 col-xl-4 border-left border-bottom py-3 py-md-2rem">
-                                <div class="d-sm-flex text-center text-sm-left">
-                                    <div class="mb-3">
-                                        <img src="{{ isset($category->bannerImage->file_name) ? my_asset($category->bannerImage->file_name) : static_asset('assets/img/placeholder.jpg') }}"
-                                             class="lazyload w-150px h-auto mx-auto has-transition"
-                                             alt="{{ $category->getTranslation('name') }}"
-                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
-                                    </div>
-                                    <div class="px-2 px-lg-4">
-                                        <h6 class="text-dark mb-0 text-truncate-2">
-                                            <a class="text-reset fw-700 fs-14 hov-text-primary"
-                                               href="{{ route('products.category', $category->slug) }}"
-                                               title="{{ $category_name }}">
-                                                {{ $category_name }}
-                                            </a>
-                                        </h6>
-                                        @foreach ($category->childrenCategories->take(5) as $key => $child_category)
-                                            <p class="mb-0 mt-3">
-                                                <a href="{{ route('products.category', $child_category->slug) }}" class="fs-13 fw-300 text-reset hov-text-primary animate-underline-primary">
-                                                    {{ $child_category->getTranslation('name') }}
+                <div class="bg-white py-3">
+                    <div class="container-fluid px-4">
+                        <div class="row g-3"> <!-- Added g-4 for gap -->
+                            @foreach ($featured_categories->take(6) as $key => $category)
+                                @php
+                                    $category_name = $category->getTranslation('name');
+                                @endphp
+                                <div class="col-6 col-md-6 col-xl-4 mt-4">
+                                    <div class="category-card position-relative h-100 border rounded-3 p-3 p-md-4 hover-shadow transition-all d-flex flex-column align-items-center">
+                                        <!-- Image Container -->
+                                        <div class="category-image-wrapper d-flex justify-content-center align-items-center mb-3">
+                                            <div class="img-square-wrapper" style="width: 120px; height: 120px;">
+                                                <img
+                                                    src="{{ isset($category->bannerImage->file_name) ? my_asset($category->bannerImage->file_name) : static_asset('assets/img/placeholder.jpg') }}"
+                                                    class="lazyload w-100 h-100 object-fit-cover rounded-3 has-transition"
+                                                    alt="{{ $category->getTranslation('name') }}"
+                                                    onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}'">
+                                            </div>
+                                        </div>
+
+                                        <!-- Category Content -->
+                                        <div class="category-content text-center w-100">
+                                            <h6 class="category-title mb-3">
+                                                <a class="text-reset fw-700 fs-14 hov-text-primary text-truncate-2 d-block"
+                                                   href="{{ route('products.category', $category->slug) }}"
+                                                   title="{{ $category_name }}">
+                                                    {{ $category_name }}
                                                 </a>
-                                            </p>
-                                        @endforeach
+                                            </h6>
+
+                                            <!-- Subcategories (Commented but Improved Structure) -->
+                                            {{--
+                                            <div class="subcategories-list">
+                                                @foreach ($category->childrenCategories->take(5) as $key => $child_category)
+                                                    <div class="subcategory-item mb-2">
+                                                        <a href="{{ route('products.category', $child_category->slug) }}"
+                                                           class="fs-13 fw-300 text-reset hov-text-primary animate-underline-primary d-inline-block">
+                                                            {{ $child_category->getTranslation('name') }}
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            --}}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
+
+                <style>
+                    .category-card {
+                        background: white;
+                        transition: all 0.3s ease;
+                    }
+
+                    .category-card:hover {
+                        transform: translateY(-3px);
+                    }
+
+                    .hover-shadow:hover {
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                    }
+
+                    .transition-all {
+                        transition: all 0.3s ease;
+                    }
+
+                    .object-fit-cover {
+                        object-fit: cover;
+                    }
+
+                    .img-square-wrapper {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    /* Mobile specific fixes */
+                    @media (max-width: 767px) {
+                        .category-card {
+                            padding: 1rem !important;
+                        }
+
+                        .img-square-wrapper {
+                            width: 100px !important;
+                            height: 100px !important;
+                        }
+                    }
+                </style>
             </div>
         </section>
     @endif
